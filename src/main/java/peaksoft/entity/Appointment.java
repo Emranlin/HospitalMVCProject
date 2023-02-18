@@ -34,7 +34,6 @@ public class Appointment {
     private Doctor doctor;
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
-            CascadeType.REMOVE,
             CascadeType.PERSIST,
             CascadeType.MERGE})
     private Department department;

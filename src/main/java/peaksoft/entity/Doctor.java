@@ -1,6 +1,7 @@
 package peaksoft.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,4 +40,9 @@ public class Doctor {
             CascadeType.PERSIST,
             CascadeType.MERGE})
     private List<Appointment>appointments;
+    @ManyToOne(cascade = {CascadeType.DETACH,
+    CascadeType.PERSIST,
+    CascadeType.REFRESH,
+    CascadeType.MERGE})
+    private Hospital hospital;
 }

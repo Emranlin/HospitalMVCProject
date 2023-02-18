@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import peaksoft.entity.Department;
 import peaksoft.entity.Hospital;
 import peaksoft.repository.HospitalRepository;
 
@@ -31,7 +32,8 @@ public class HospitalRepositoryImpl implements HospitalRepository {
 
     @Override
     public Hospital getCompanyById(Long id) {
-        return null;
+
+    return null;
     }
 
     @Override
@@ -41,6 +43,11 @@ public class HospitalRepositoryImpl implements HospitalRepository {
 
     @Override
     public void updateCompany(Long id, Hospital newHospital) {
+
+    }
+
+    @Override
+    public void addDepartment(Department department) {
 
     }
 }

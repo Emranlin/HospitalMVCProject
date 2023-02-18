@@ -1,4 +1,10 @@
 package peaksoft.repository.impl;
 
-public class AppointmentRepositoryImpl {
+import peaksoft.repository.AppointmentRepository;
+
+public class AppointmentRepositoryImpl implements AppointmentRepository,AutoCloseable {
+    @Override
+    public void close() throws Exception {
+
+    }
 }

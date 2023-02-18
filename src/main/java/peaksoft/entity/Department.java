@@ -28,7 +28,10 @@ public class Department {
             CascadeType.MERGE})
 
     private List<Doctor> doctors;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH,
+            CascadeType.DETACH,
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
     private Hospital hospital;
 
 }

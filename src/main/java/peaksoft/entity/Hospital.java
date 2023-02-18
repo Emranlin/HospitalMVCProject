@@ -21,11 +21,7 @@ public class Hospital {
     private  Long id;
     private String name;
     private String address;
-    @OneToMany(cascade = {CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.REMOVE,
-            CascadeType.PERSIST,
-            CascadeType.MERGE})
+    @OneToMany(mappedBy = "hospital",cascade = {CascadeType.ALL})
     private List<Doctor> doctors;
     @OneToMany(mappedBy = "hospital",cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
