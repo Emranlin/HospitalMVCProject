@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface HospitalService {
     void save(Hospital hospital);
-    List<Hospital> getAllCompanies();
-    Hospital getCompanyById(Long id);
-    void deleteCompany(Long id);
-    void updateCompany( Long id,Hospital newHospital);
+    List<Hospital> getAllHospitals();
+    Hospital getHospitalById(Long id);
+    void deleteHospital(Long id);
+    void updateHospital( Long id,Hospital newHospital);
 }

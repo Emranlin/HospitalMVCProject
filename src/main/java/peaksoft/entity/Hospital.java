@@ -21,6 +21,8 @@ public class Hospital {
     private  Long id;
     private String name;
     private String address;
+    @Column(length =1000000 )
+    private String logo;
     @OneToMany(mappedBy = "hospital",cascade = {CascadeType.ALL})
     private List<Doctor> doctors;
     @OneToMany(mappedBy = "hospital",cascade = {CascadeType.DETACH,

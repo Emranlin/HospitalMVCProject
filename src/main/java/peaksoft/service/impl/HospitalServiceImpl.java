@@ -11,7 +11,6 @@ import peaksoft.service.HospitalService;
 
 import java.util.List;
 @Service
-@Transactional
 public class HospitalServiceImpl implements HospitalService {
     private final HospitalRepository hospitalRepository;
 @Autowired
@@ -30,26 +29,41 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Override
 
-    public List<Hospital> getAllCompanies() throws RuntimeException {
+    public List<Hospital> getAllHospitals() throws RuntimeException {
         try {
-            return hospitalRepository.getAllCompanies();
+            return hospitalRepository.getAllHospital();
         } catch (RuntimeException e) {
             throw new NotFoundException("Hospital don't found");
         }
     }
 
     @Override
-    public Hospital getCompanyById(Long id) {
-        return null;
+    public Hospital getHospitalById(Long id)throws RuntimeException {
+    try {
+        return hospitalRepository.getHospitalById(id);
+    }catch (RuntimeException e){
+        throw new NotFoundException("Hospital not found");
+    }
+
     }
 
     @Override
-    public void deleteCompany(Long id) {
+    public void deleteHospital(Long id) throws RuntimeException{
+    try {
+        hospitalRepository.deleteHospital(id);
+    }catch (NotFoundException e){
+        throw new NotFoundException("Hospital don't deleted");
+    }
 
     }
 
     @Override
-    public void updateCompany(Long id, Hospital newHospital) {
+    public void updateHospital(Long id, Hospital newHospital) throws RuntimeException{
+    try{
+        hospitalRepository.updateHospital(id, newHospital);
+    }catch (RuntimeException e){
+        throw new NotFoundException("Hospital wrong");
+    }
 
     }
 }
