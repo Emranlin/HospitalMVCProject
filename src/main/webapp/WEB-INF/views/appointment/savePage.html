@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Appointment</title>
+</head>
+<body>
+<form th:method="POST"th:action="@{/appointments/savePage}" th:object="${newAppointment}">
+
+  <div>
+    <label for="localdate">LocalDate</label>
+    <input type="datetime-local" th:field="*{localdate}" id="localdate">
+  </div>
+
+
+<br>
+  <div class="form-group">
+    <select th:field="*{departmentId}">
+      <option value="">~select an department~</option>
+      <option th:each="depatment : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
+    </select>
+  </div>
+
+<br>
+  <div class="form-group">
+    <select th:field="*{doctorId}">
+      <option value="">~select an doctor~</option>
+      <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
+    </select>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <select th:field="*{patientId}">
+      <option value="">~select an patient~</option>
+      <option th:each="patient : ${patients}" th:value="${patient.id}" th:text="${patient.name}"></option>
+    </select>
+  </div>
+
+  <div>
+    <input type="submit" value="SAVE" class="btn btn-primary btn-lg">
+  </div>
+</form>
+</div>
+
+
+</form>
+<br>
+<p style="text-align: center">
+  <a class="btn btn-outline-primary" role="button" href="/appointments/appointment/savePage">ADD NEW APPOINTMENT</a></p>
+
+</body>
+</html>
