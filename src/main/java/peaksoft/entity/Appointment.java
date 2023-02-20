@@ -20,22 +20,26 @@ public class Appointment {
 
     private Long id;
     private LocalDate localDate;
+    @Transient
+    private Long departmentId;
+    @Transient
+    private Long doctorId;
+    @Transient
+    private Long patientId;
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
-            CascadeType.REMOVE,
             CascadeType.PERSIST,
-            CascadeType.MERGE})
+            CascadeType.MERGE},fetch = FetchType.EAGER)
     private Patient patient;
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
-            CascadeType.REMOVE,
             CascadeType.PERSIST,
-            CascadeType.MERGE})
+            CascadeType.MERGE},fetch = FetchType.EAGER)
     private Doctor doctor;
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.PERSIST,
-            CascadeType.MERGE})
+            CascadeType.MERGE},fetch = FetchType.EAGER)
     private Department department;
 
 }

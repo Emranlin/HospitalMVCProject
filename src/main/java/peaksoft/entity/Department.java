@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,17 +22,32 @@ public class Department {
     private Long id;
     private String name;
     private String photo;
+    @Transient
+    private Long hospitalId;
+//    @Transient
+//    private Long doctorId;
+
     @ManyToMany(mappedBy = "departments",cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
-            CascadeType.REMOVE,
             CascadeType.PERSIST,
-            CascadeType.MERGE})
+            CascadeType.MERGE},fetch = FetchType.EAGER)
 
     private List<Doctor> doctors;
+    public void addDoctor(Doctor doctor){
+        if(doctors==null){
+            doctors=new ArrayList<>();
+        }
+        doctors.add(doctor);
+    }
     @ManyToOne(cascade = {CascadeType.REFRESH,
             CascadeType.DETACH,
             CascadeType.PERSIST,
             CascadeType.MERGE})
     private Hospital hospital;
 
+
+    public Department(String name, String photo) {
+        this.name = name;
+        this.photo = photo;
+    }
 }

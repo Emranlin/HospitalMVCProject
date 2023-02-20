@@ -1,11 +1,11 @@
 package peaksoft.service.impl;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.entity.Hospital;
 import peaksoft.exceptions.BadRequestException;
 import peaksoft.exceptions.NotFoundException;
+import peaksoft.repository.DepartmentRepository;
 import peaksoft.repository.HospitalRepository;
 import peaksoft.service.HospitalService;
 
@@ -13,14 +13,17 @@ import java.util.List;
 @Service
 public class HospitalServiceImpl implements HospitalService {
     private final HospitalRepository hospitalRepository;
+    private final DepartmentRepository departmentRepository;
 @Autowired
-    public HospitalServiceImpl(HospitalRepository hospitalRepository) {
+    public HospitalServiceImpl(HospitalRepository hospitalRepository, DepartmentRepository departmentRepository) {
         this.hospitalRepository = hospitalRepository;
-    }
+    this.departmentRepository = departmentRepository;
+}
 
     @Override
     public void save(Hospital hospital) throws RuntimeException {
         try {
+
             hospitalRepository.save(hospital);
         } catch (BadRequestException e) {
    throw new NotFoundException("(Hospital save)Wrong !");

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import peaksoft.enums.Gender;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,6 +31,8 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String email;
+    @Transient
+    private Long hospitalId;
     @ManyToOne(cascade = {CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.REMOVE,
@@ -40,6 +43,12 @@ public class Patient {
             CascadeType.REFRESH,
             CascadeType.REMOVE,
             CascadeType.PERSIST,
-            CascadeType.MERGE})
+            CascadeType.MERGE},fetch = FetchType.EAGER)
     private List<Appointment> appointments;
+    public void addAppointment(Appointment appointment){
+        if(appointments==null){
+            appointments=new ArrayList<>();
+        }
+        appointments.add(appointment);
+    }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+import peaksoft.entity.Appointment;
 import peaksoft.entity.Department;
 import peaksoft.entity.Hospital;
 import peaksoft.repository.HospitalRepository;
@@ -46,11 +47,10 @@ public class HospitalRepositoryImpl implements HospitalRepository {
       hospital1.setName(newHospital.getName());
       hospital1.setAddress(newHospital.getAddress());
       hospital1.setLogo(newHospital.getLogo());
+      entityManager.persist(hospital1);
 
     }
 
-    @Override
-    public void addDepartment(Department department) {
 
-    }
+
 }

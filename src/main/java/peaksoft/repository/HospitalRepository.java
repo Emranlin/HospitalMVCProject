@@ -12,6 +12,5 @@ public interface HospitalRepository {
     Hospital getHospitalById(Long id);
     void deleteHospital(Long id);
     void updateHospital( Long id,Hospital newHospital);
-    void addDepartment(Department department);
-    void addAppointment(Appointment appointment);
+
 }
